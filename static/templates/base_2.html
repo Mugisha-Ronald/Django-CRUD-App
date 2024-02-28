@@ -1,0 +1,204 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>sideBar</title>
+	{% block htmlhead %}
+	{% endblock htmlhead %}
+    <!-- <link rel="stylesheet" href="static/css/style_2.css" />
+	<link rel="stylesheet" href="static/css/style.css" /> -->
+
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style_2.css' %}">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+        @import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+
+
+
+body {
+	font-family: 'Roboto',sans-serif;
+}
+
+*{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	text-decoration: none;
+	margin-bottom: 10px;
+    
+}
+
+.sidebar{
+	position: absolute;
+	left: 0;
+	width: 250px;
+	height: 100%;
+	background: #042331;
+	transition: all .5s ease;
+	color: white;
+	overflow: auto;
+
+}
+
+
+.sidebar header{
+	font-size: 22px;
+	color: white;
+	text-align: center;
+	line-height: 70px;
+	background: #063146;
+	user-select: none;
+
+}
+
+.sidebar ul a{
+	
+	height: 100%;
+	width: 100%;
+	line-height: 65px;
+	font-size: 20px;
+	color: white;
+	padding-left: 40px;
+	box-sizing: border-box;
+	border-top: 1px solid rgba(255, 255, 255, .1);
+	border-bottom: 1px solid black;
+	transition: .4s;
+}
+
+ul li:hover a{
+	padding-left: 50px;
+}
+
+ul li {
+	cursor: pointer;
+}
+
+.sidebar ul a i{
+	margin-right: 16px;
+
+}
+
+
+
+
+#check{
+	display: none;
+}
+
+label #btn, label #cancel{
+	position: absolute;
+	cursor: pointer;
+	background: #042331;
+	border-radius: 35px;
+
+
+
+}
+
+label #btn{
+	left: 40px;
+	top: 25px;
+	font-size: 35px;
+	color: white;
+	padding: 6px 12px;
+	transition: all .5s;
+}
+
+
+label #cancel{
+	z-index: 1111;
+	left: -195px;
+	top: 17px;
+	font-size: 30px;
+	color: #0a5275;
+	padding: 4px 9px;
+	transition: all .5s ease;
+}
+
+#check:checked ~ .sidebar{
+	left: 0;
+}
+
+
+#check:checked ~ label #btn{
+	left: 250px;
+	opacity: 0;
+	pointer-events: none;
+}
+
+
+#check:checked ~ label #cancel{
+	left: 195px;
+}
+
+#check:checked ~ section{
+	margin-left: 250px;
+}
+
+section{
+	/* background: url("/static/images/plane_1.jpg") no-repeat; */
+	background-position: center;
+	background-size: cover;
+	height: 100vh;
+	transition: all .5s;
+	padding-left: 290px;
+	padding-right: 10px;
+}
+
+
+
+
+
+    </style>
+
+	
+	<!-- <script src="https://kit.fontawesome.com/a076d05399.js"></script> -->
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/v4-shims.min.js"></script> -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+	<input type="checkbox" id="check">
+	<label for="check">
+		<i class="fas fa-bars" id="btn"></i>
+		<i class="fas fa-times" id="cancel"></i>
+		
+	</label>
+
+
+	<div class="sidebar">
+		<header>{{soldierDetails.full_names}}</header>
+		<ul>
+			<li><a href="{% url 'homeAddress' %}"><i class="fa-solid fa-house"></i>Home Address</a></li>
+			<li><a href="{% url 'spouse' %}"><i class="fas fa-female"></i>Wife|Husband</a></li>
+			<li><a href="{% url 'pNOK' %}"><i class="fa-solid fa-person"></i>PrimaryNOK</a></li>
+			<li><a href="{% url 'sNOK' %}"><i class="fa-solid fa-person"></i>SecondaryNOK</a></li>
+			<li><a href="{% url 'estateAdmin' %}"><i class="fa-solid fa-person"></i>EstateAdmin</a></li>
+			<li><a href="{% url 'formalEduc' %}"><i class="fas fa-university"></i>Formal Educ</a></li>
+			<li><a href="{% url 'militaryCrse' %}"><i class="fa-solid fa-person-military-pointing"></i>Military Courses</a></li>
+			<li><a href="{% url 'livingChldrn' %}"><i class="fa-solid fa-children"></i>Living Children</a></li>
+		
+		</ul>
+		
+	</div>
+
+	<section>
+		{% block content %}
+
+		{% endblock %}
+	</section>
+
+	
+
+    
+
+
+
+
+</body>
+</html>
